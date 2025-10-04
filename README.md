@@ -1,4 +1,4 @@
-# One Letter Method - POC
+# First Letter Method - POC
 
 Matthew 5
 

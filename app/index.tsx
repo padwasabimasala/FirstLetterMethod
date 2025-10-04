@@ -17,9 +17,16 @@ function getVerse(verseNum) {
   return firstLettersAndPunct(bible.matthew[verseNum.toString()]);
 }
 
+/* TODO
+
+- make the verse text fill the whole swipable area
+- center the book title
+
+
+*/
+
 export default function Index() {
   const [verseNum, setverseNum] = useState(1);
-  const [verseText, setVerseText] = useState(bible.matthew["1"]);
 
   const onPanEnd = (event: any) => {
     const dx = event.nativeEvent.translationX;
