@@ -18,7 +18,7 @@ export default function Index() {
   const onPanEnd = (event: any) => {
     const dx = event.nativeEvent.translationX;
     if (dx < -50) setverseNum((n) => n + 1);
-    else if (dx > 50) setverseNum((n) => n - 1);
+    else if (dx > 50) setverseNum((n) => (n === 1 ? 1 : n - 1));
   };
 
   return (
