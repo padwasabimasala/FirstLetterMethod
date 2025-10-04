@@ -12,15 +12,13 @@ function firstLettersAndPunct(str) {
 }
 
 export default function Index() {
-  const [verseNum, setVerseNum] = useState(1);
+  const [verseNum, setverseNum] = useState(1);
   const [verseText, setVerseText] = useState(bible.matthew["1"]);
-
-  const [count, setCount] = useState(0);
 
   const onPanEnd = (event: any) => {
     const dx = event.nativeEvent.translationX;
-    if (dx < -50) setCount((c) => c + 1);
-    else if (dx > 50) setCount((c) => c - 1);
+    if (dx < -50) setverseNum((c) => c + 1);
+    else if (dx > 50) setverseNum((c) => c - 1);
   };
 
   return (
@@ -33,7 +31,7 @@ export default function Index() {
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Text style={{ fontSize: 40 }}>{count}</Text>
+          <Text style={{ fontSize: 40 }}>{verseNum}</Text>
         </View>
       </PanGestureHandler>
     </GestureHandlerRootView>
@@ -48,7 +46,7 @@ export default function Index() {
   //       </Text>
   //       <GestureDetector gesture={pan}>
   //         <Text style={{ fontSize: 40, textAlign: "center", marginTop: 200 }}>
-  //           {count}
+  //           {verseNum}
   //         </Text>
   //       </GestureDetector>
   //     </SafeAreaView>
