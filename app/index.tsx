@@ -19,6 +19,7 @@ export default function Index() {
     const dx = event.nativeEvent.translationX;
     if (dx < -50) setverseNum((n) => n + 1);
     else if (dx > 50) setverseNum((n) => (n === 1 ? 1 : n - 1));
+    setVerseText(bible.matthew[verseNum.toString()]);
   };
 
   return (
@@ -28,30 +29,15 @@ export default function Index() {
           if (e.nativeEvent.state === State.END) onPanEnd(e);
         }}
       >
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <Text style={{ fontSize: 40 }}>{verseNum}</Text>
+        <View>
+          <Text style={styles.title}>Matthew 5:{verseNum}</Text>
+          <Text style={styles.verse}>
+            {firstLettersAndPunct(verseText).join(" ")}
+          </Text>
         </View>
       </PanGestureHandler>
     </GestureHandlerRootView>
   );
-
-  // return (
-  //   <GestureHandlerRootView style={{ flex: 1 }}>
-  //     <SafeAreaView style={styles.container}>
-  //       <Text style={styles.title}>Matthew 5:1</Text>
-  //       <Text style={styles.verse}>
-  //         {firstLettersAndPunct(verseText).join(" ")}
-  //       </Text>
-  //       <GestureDetector gesture={pan}>
-  //         <Text style={{ fontSize: 40, textAlign: "center", marginTop: 200 }}>
-  //           {verseNum}
-  //         </Text>
-  //       </GestureDetector>
-  //     </SafeAreaView>
-  //   </GestureHandlerRootView>
-  // );
 }
 
 const styles = StyleSheet.create({
