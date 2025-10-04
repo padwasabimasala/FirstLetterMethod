@@ -8,7 +8,13 @@ import {
 import bible from "../bible.json";
 
 function firstLettersAndPunct(str) {
-  return [...str.matchAll(/\b(\p{L})|([^\p{L}\s])/gu)].map((m) => m[1] || m[2]);
+  return [...str.matchAll(/\b(\p{L})|([^\p{L}\s])/gu)]
+    .map((m) => m[1] || m[2])
+    .join(" ");
+}
+
+function getVerse(verseNum) {
+  return firstLettersAndPunct(bible.matthew[verseNum.toString()]);
 }
 
 export default function Index() {
@@ -19,7 +25,6 @@ export default function Index() {
     const dx = event.nativeEvent.translationX;
     if (dx < -50) setverseNum((n) => n + 1);
     else if (dx > 50) setverseNum((n) => (n === 1 ? 1 : n - 1));
-    setVerseText(bible.matthew[verseNum.toString()]);
   };
 
   return (
@@ -31,9 +36,7 @@ export default function Index() {
       >
         <View>
           <Text style={styles.title}>Matthew 5:{verseNum}</Text>
-          <Text style={styles.verse}>
-            {firstLettersAndPunct(verseText).join(" ")}
-          </Text>
+          <Text style={styles.verse}>{getVerse(verseNum)}</Text>
         </View>
       </PanGestureHandler>
     </GestureHandlerRootView>
