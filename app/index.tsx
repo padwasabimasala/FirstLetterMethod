@@ -1,6 +1,9 @@
 import { Text, View } from "react-native";
+import bible from "../bible.json";
+console.log(bible.matthew["1"]);
 
 export default function Index() {
+  //const bible = bible["matthew"]["1"]["1"];
   return (
     <View
       style={{
@@ -9,7 +12,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>{bible.matthew["1"]}</Text>
     </View>
   );
 }
